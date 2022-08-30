@@ -82,7 +82,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Built using Docker image: **${{ github.event.inputs.image }}**."
+          echo "Built using Docker image: **${{ github.event.inputs.image }}**." >> notes.txt
           echo "" >> notes.txt
           echo "## Checksums (blake2b):" >> notes.txt
           echo "" >> notes.txt

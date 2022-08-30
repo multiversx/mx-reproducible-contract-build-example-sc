@@ -84,10 +84,10 @@ jobs:
         run: |
           echo "Built using Docker image: **${{ github.event.inputs.image }}**." >> notes.txt
           echo "" >> notes.txt
-          echo "## Checksums (blake2b):" >> notes.txt
+          echo "## Codehash (blake2b):" >> notes.txt
           echo "" >> notes.txt
 
-          for i in $(find ./assets -type f); do
+          for i in $(find ./assets -type f -name *.wasm); do
             filename=$(basename ${i})
             checksum=($(b2sum -l 256 ${i}))
             echo " - **${filename}**: \`${checksum}\`" >> notes.txt

@@ -6,12 +6,7 @@ edition = "2018"
 publish = false
 
 [lib]
-crate-type = [ "cdylib",]
-
-[workspace]
-members = [ ".",]
-
-[dev-dependencies]
+crate-type = ["cdylib"]
 
 [profile.release]
 codegen-units = 1
@@ -24,8 +19,12 @@ panic = "abort"
 path = ".."
 
 [dependencies.elrond-wasm-node]
-version = "0.34.1"
+version = "0.35.0"
 
 [dependencies.elrond-wasm-output]
-version = "0.34.1"
-features = [ "wasm-output-mode",]
+version = "0.35.0"
+
+features = ["wasm-output-mode"]
+
+[workspace]
+members = ["."]

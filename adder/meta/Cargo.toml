@@ -3,12 +3,9 @@ name = "adder-meta"
 version = "0.0.0"
 edition = "2018"
 publish = false
-authors = [ "you",]
-
-[dev-dependencies]
 
 [dependencies.adder]
 path = ".."
 
 [dependencies.elrond-wasm-debug]
-version = "0.34.1"
+version = "0.35.0"

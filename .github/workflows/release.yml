@@ -36,14 +36,14 @@ jobs:
 
       - name: Build contract
         run: |
-          python3 ./build_contract_rust_with_docker.py --image=${{ github.event.inputs.image }} --project=. --output=../output-from-docker
+          python3 ./build_contract_rust_with_docker.py --image=${{ github.event.inputs.image }} --project=. --output=/home/runner/work/output-from-docker
 
       - name: Save artifacts
         uses: actions/upload-artifact@v2
         with:
           name: built-contracts
           path: |
-            /home/runner/work/reproducible-contract-build-example/output-from-docker/**/*.*
+            /home/runner/work/output-from-docker/**/*.*
           if-no-files-found: error
 
   release:

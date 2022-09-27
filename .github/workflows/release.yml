@@ -37,15 +37,17 @@ jobs:
       - name: Build contract
         run: |
           #python3 ./build_contract_rust_with_docker.py --image=${{ github.event.inputs.image }} --project=./reproducible-contract-build-example --output=./output-from-docker
-          docker run --mount type=bind,source=$(pwd)/reproducible-contract-build-example,destination=/project --mount type=bind,source=$(pwd)/output-from-docker,destination=/output --rm elrondnetwork/build-contract-rust:frozen-001 --output-owner-id 1001 --output-group-id 121
+          ls $(pwd)/..
+          mkdir -p $(pwd)/../output-from-docker
+          docker run --mount type=bind,source=$(pwd),destination=/project --mount type=bind,source=$(pwd)/../output-from-docker,destination=/output --rm elrondnetwork/build-contract-rust:frozen-001 --output-owner-id 1001 --output-group-id 121
 
       - name: Save artifacts
         uses: actions/upload-artifact@v2
         with:
           name: built-contracts
           path: |
-            ./output-from-docker/**/*.wasm
-            ./output-from-docker/**/*.abi.json
+            ../output-from-docker/**/*.wasm
+            ../output-from-docker/**/*.abi.json
           if-no-files-found: error
 
   release:

@@ -36,10 +36,13 @@ jobs:
 
       - name: Build contract
         run: |
+          echo $(pwd)
+          ls
+          tree -L 2
           #python3 ./build_contract_rust_with_docker.py --image=${{ github.event.inputs.image }} --project=./reproducible-contract-build-example --output=./output-from-docker
-          ls $(pwd)/..
-          mkdir -p $(pwd)/../output-from-docker
-          docker run --mount type=bind,source=$(pwd),destination=/project --mount type=bind,source=$(pwd)/../output-from-docker,destination=/output --rm elrondnetwork/build-contract-rust:frozen-001 --output-owner-id 1001 --output-group-id 121
+          #ls $(pwd)/..
+          #mkdir -p $(pwd)/../output-from-docker
+          #docker run --mount type=bind,source=$(pwd),destination=/project --mount type=bind,source=$(pwd)/../output-from-docker,destination=/output --rm elrondnetwork/build-contract-rust:frozen-001 --output-owner-id 1001 --output-group-id 121
 
       - name: Save artifacts
         uses: actions/upload-artifact@v2

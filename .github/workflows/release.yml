@@ -79,21 +79,19 @@ jobs:
           # sleep 10
           # gh release upload ${{ github.event.inputs.tag }} $(find ./assets -type f)
 
-          echo "Built using Docker image: **${{ github.event.inputs.image }}**." >> new_notes.txt
-          echo "" >> new_notes.txt
-          echo "## Codehash (blake2b):" >> new_notes.txt
-          echo "" >> new_notes.txt
+          echo $(gh release view ${{ github.event.inputs.tag }} --json body --jq ".body") >> notes.txt
+          echo "" >> notes.txt
+
+          echo "Built using Docker image: **${{ github.event.inputs.image }}**." >> notes.txt
+          echo "" >> notes.txt
+          echo "## Codehash (blake2b):" >> notes.txt
+          echo "" >> notes.txt
 
           for i in $(find ./assets -type f -name *.wasm); do
             filename=$(basename ${i})
             checksum=($(b2sum -l 256 ${i}))
-            echo " - **${filename}**: \`${checksum}\`" >> new_notes.txt
+            echo " - **${filename}**: \`${checksum}\`" >> notes.txt
           done
-
-          EXISTING_NOTES=$(gh release view ${{ github.event.inputs.tag }} --json body --jq ".body")
-          echo ${EXISTING_NOTES} >> notes.txt
-          echo "" >> notes.txt
-          cat new_notes.txt >> notes.txt
 
           gh release edit ${{ github.event.inputs.tag }} --notes-file=notes.txt
           gh release upload ${{ github.event.inputs.tag }} $(find ./assets -type f)

@@ -90,7 +90,7 @@ jobs:
             echo " - **${filename}**: \`${checksum}\`" >> new_notes.txt
           done
 
-          EXISTING_NOTES=$(gh release view ${{ github.event.inputs.tag }} --json body)
+          EXISTING_NOTES=$(gh release view ${{ github.event.inputs.tag }} --json body --jq ".body")
           echo ${EXISTING_NOTES} >> notes.txt
           echo "" >> notes.txt
           cat new_notes.txt >> notes.txt

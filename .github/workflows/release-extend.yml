@@ -64,6 +64,7 @@ jobs:
           echo $(gh release view ${{ github.event.inputs.tag }} --json body --jq ".body") >> notes.txt
           echo "" >> notes.txt
 
+          echo "## Build notes:" >> notes.txt
           echo "Built using Docker image: **${{ github.event.inputs.image }}**." >> notes.txt
           echo "" >> notes.txt
           echo "## Codehash (blake2b):" >> notes.txt

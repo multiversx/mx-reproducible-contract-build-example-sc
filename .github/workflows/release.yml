@@ -93,7 +93,7 @@ jobs:
           EXISTING_NOTES=$(gh release view ${{ github.event.inputs.tag }} --json body)
           echo ${EXISTING_NOTES} >> notes.txt
           echo "" >> notes.txt
-          cat new_notes >> notes.txt
+          cat new_notes.txt >> notes.txt
 
           gh release edit ${{ github.event.inputs.tag }} --notes-file=notes.txt
           gh release upload ${{ github.event.inputs.tag }} $(find ./assets -type f)

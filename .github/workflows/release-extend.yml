@@ -1,0 +1,80 @@
+name: Extend release (add build artifacts)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        description: Existing release tag
+      image:
+        type: choice
+        required: true
+        description: Frozen image (with tag)
+        options: 
+        - elrondnetwork/build-contract-rust:frozen-001
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ env.GITHUB_REF_NAME }}
+          fetch-depth: 0
+          repository: ${{ env.GITHUB_REPOSITORY }}
+
+      - name: Download build script
+        run: |
+          wget https://raw.githubusercontent.com/ElrondNetwork/elrond-sdk-images/main/scripts/build_contract_rust_with_docker.py
+
+      - name: Build contract
+        run: |
+          python3 ./build_contract_rust_with_docker.py --image=${{ github.event.inputs.image }} --project=. --output=/home/runner/work/output-from-docker
+
+      - name: Save artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: built-contracts
+          path: |
+            /home/runner/work/output-from-docker/**/*.*
+          if-no-files-found: error
+
+  release:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
+
+      - name: Download all workflow artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: assets
+
+      - name: Extend release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo $(gh release view ${{ github.event.inputs.tag }} --json body --jq ".body") >> notes.txt
+          echo "" >> notes.txt
+
+          echo "## Build notes:" >> notes.txt
+          echo "Built using Docker image: **${{ github.event.inputs.image }}**." >> notes.txt
+          echo "" >> notes.txt
+          echo "## Codehash (blake2b):" >> notes.txt
+          echo "" >> notes.txt
+
+          for i in $(find ./assets -type f -name *.wasm); do
+            filename=$(basename ${i})
+            checksum=($(b2sum -l 256 ${i}))
+            echo " - **${filename}**: \`${checksum}\`" >> notes.txt
+          done
+
+          gh release edit ${{ github.event.inputs.tag }} --notes-file=notes.txt
+          gh release upload ${{ github.event.inputs.tag }} $(find ./assets -type f)

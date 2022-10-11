@@ -9,7 +9,7 @@ on:
       image_tag:
         type: choice
         required: true
-        description: elrondnetwork/build-contract-rust
+        description: Image elrondnetwork/build-contract-rust
         options: 
         - v2.0.0
 

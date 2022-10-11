@@ -9,9 +9,10 @@ on:
       image:
         type: choice
         required: true
-        description: Frozen image (with tag)
+        description: Docker image
         options: 
-        - elrondnetwork/build-contract-rust:frozen-001
+        - elrondnetwork/build-contract-rust:v2.0.0
+        - elrondnetwork/build-contract-rust:v3-experimental
 
 permissions:
   contents: write
@@ -29,11 +30,11 @@ jobs:
 
       - name: Download build script
         run: |
-          wget https://raw.githubusercontent.com/ElrondNetwork/elrond-sdk-images/main/scripts/build_contract_rust_with_docker.py
+          wget https://raw.githubusercontent.com/ElrondNetwork/elrond-sdk-images-build-contract-rust/main/build_with_docker.py
 
       - name: Build contract
         run: |
-          python3 ./build_contract_rust_with_docker.py --image=${{ github.event.inputs.image }} --project=. --output=/home/runner/work/output-from-docker
+          python3 ./build_with_docker.py --no-docker-tty --image=${{ github.event.inputs.image }} --project=. --output=/home/runner/work/output-from-docker
 
       - name: Save artifacts
         uses: actions/upload-artifact@v2

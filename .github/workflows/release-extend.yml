@@ -6,13 +6,12 @@ on:
       tag:
         required: true
         description: Existing release tag
-      image:
+      image_tag:
         type: choice
         required: true
-        description: Docker image
+        description: elrondnetwork/build-contract-rust
         options: 
-        - elrondnetwork/build-contract-rust:v2.0.0
-        - elrondnetwork/build-contract-rust:experimental-v3
+        - v2.0.0
 
 permissions:
   contents: write
@@ -30,11 +29,11 @@ jobs:
 
       - name: Download build script
         run: |
-          wget https://raw.githubusercontent.com/ElrondNetwork/elrond-sdk-images-build-contract-rust/main/build_with_docker.py
+          wget https://raw.githubusercontent.com/ElrondNetwork/elrond-sdk-images-build-contract-rust/${{ github.event.inputs.image_tag }}/build_with_docker.py
 
       - name: Build contract
         run: |
-          python3 ./build_with_docker.py --no-docker-tty --image=${{ github.event.inputs.image }} --project=. --output=/home/runner/work/output-from-docker
+          python3 ./build_with_docker.py --no-docker-tty --image=elrondnetwork/build-contract-rust:${{ github.event.inputs.image_tag }} --project=. --output=/home/runner/work/output-from-docker
 
       - name: Save artifacts
         uses: actions/upload-artifact@v2
@@ -66,7 +65,7 @@ jobs:
           echo "" >> notes.txt
 
           echo "## Build notes:" >> notes.txt
-          echo "Built using Docker image: **${{ github.event.inputs.image }}**." >> notes.txt
+          echo "Built using Docker image: **elrondnetwork/build-contract-rust:${{ github.event.inputs.image_tag }}**." >> notes.txt
           echo "" >> notes.txt
           echo "## Codehash (blake2b):" >> notes.txt
           echo "" >> notes.txt

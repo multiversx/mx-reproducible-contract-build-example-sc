@@ -12,7 +12,7 @@ on:
         description: Docker image
         options: 
         - elrondnetwork/build-contract-rust:v2.0.0
-        - elrondnetwork/build-contract-rust:v3-experimental
+        - elrondnetwork/build-contract-rust:experimental-v3
 
 permissions:
   contents: write

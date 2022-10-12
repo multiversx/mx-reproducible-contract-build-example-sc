@@ -12,6 +12,7 @@ on:
         description: Image elrondnetwork/build-contract-rust
         options: 
         - v2.0.0
+        - v3.0.0
 
 permissions:
   contents: write

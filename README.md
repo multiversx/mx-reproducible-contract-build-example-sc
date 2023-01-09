@@ -1,4 +1,5 @@
-# reproducible-contract-build-example
+# mx-reproducible-contract-build-example-sc/releases
+
 Example of a Smart Contract whose build pipeline supports reproducible builds.
 
-See [docs.elrond.com](https://docs.elrond.com/developers/reproducible-contract-builds).
+See [docs.multiversx.com](https://docs.multiversx.com/developers/reproducible-contract-builds).

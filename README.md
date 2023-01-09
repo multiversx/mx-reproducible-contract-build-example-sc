@@ -1,4 +1,4 @@
-# mx-reproducible-contract-build-example-sc/releases
+# mx-reproducible-contract-build-example-sc
 
 Example of a Smart Contract whose build pipeline supports reproducible builds.
 

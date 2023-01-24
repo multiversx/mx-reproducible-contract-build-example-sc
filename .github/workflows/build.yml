@@ -1,0 +1,10 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    uses: multiversx/mx-sc-actions/.github/workflows/reproducible-build.yml@reproducible-builds-24
+    with:
+      image_tag: next
+      attach_to_release: true

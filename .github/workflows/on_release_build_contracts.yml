@@ -1,3 +1,5 @@
+name: On release, build contracts
+
 on:
   release:
     types: [published]

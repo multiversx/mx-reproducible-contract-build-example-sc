@@ -1,4 +1,4 @@
-name: Test 1 (creating a release)
+name: Test 3, no release
 
 on:
   pull_request:
@@ -8,4 +8,3 @@ jobs:
     uses: multiversx/mx-sc-actions/.github/workflows/reproducible-build.yml@reproducible-builds-24
     with:
       image_tag: next
-      create_release: true

@@ -1,11 +1,12 @@
-name: Test 1 (creating a release)
+name: Test 2 (attaching to existing release)
 
 on:
-  pull_request:
+  release:
+    types: [published]
 
 jobs:
   build:
     uses: multiversx/mx-sc-actions/.github/workflows/reproducible-build.yml@reproducible-builds-24
     with:
       image_tag: next
-      create_release: true
+      attach_to_release: true

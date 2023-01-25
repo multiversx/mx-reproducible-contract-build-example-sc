@@ -1,4 +1,4 @@
-name: On release, build contracts
+name: Test 1
 
 on:
   pull_request:

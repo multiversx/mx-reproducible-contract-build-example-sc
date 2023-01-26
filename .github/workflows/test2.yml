@@ -4,6 +4,9 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     uses: multiversx/mx-sc-actions/.github/workflows/reproducible-build.yml@reproducible-builds-24

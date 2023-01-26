@@ -4,9 +4,12 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: write
+
 jobs:
   build:
-    uses: multiversx/mx-sc-actions/.github/workflows/reproducible-build.yml@reproducible-builds-24
+    uses: multiversx/mx-sc-actions/.github/workflows/reproducible-build.yml@v2.1.0
     with:
-      image_tag: next
+      image_tag: v4.1.0
       attach_to_existing_release: true

@@ -1,4 +1,4 @@
-name: Test 2 (attaching to existing release)
+name: Test (attaching to existing release)
 
 on:
   release:

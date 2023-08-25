@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "adder",
+    "adder/meta",
+
+    "multisig",
+    "multisig/meta"
+]

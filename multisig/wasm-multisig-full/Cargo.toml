@@ -2,16 +2,11 @@
 name = "multisig-full-wasm"
 version = "0.0.0"
 authors = ["you"]
-edition = "2018"
+edition = "2021"
 publish = false
 
 [lib]
 crate-type = ["cdylib"]
-
-[workspace]
-members = ["."]
-
-[dev-dependencies]
 [profile.release]
 codegen-units = 1
 opt-level = "z"
@@ -22,4 +17,7 @@ panic = "abort"
 path = ".."
 
 [dependencies.multiversx-sc-wasm-adapter]
-version = "0.41.1"
+version = "0.43.2"
+
+[workspace]
+members = ["."]

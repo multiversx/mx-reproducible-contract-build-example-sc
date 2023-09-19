@@ -3,6 +3,9 @@ members = [
     "adder",
     "adder/meta",
 
+    "lottery-esdt",
+    "lottery-esdt/meta",
+
     "multisig",
     "multisig/meta"
 ]

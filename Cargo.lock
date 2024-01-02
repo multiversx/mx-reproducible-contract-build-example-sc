@@ -1377,9 +1377,9 @@ dependencies = [
 
 [[package]]
 name = "multiversx-sc-modules"
-version = "0.43.3"
+version = "0.43.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e5c160745bf0c997146fa816a19fba8a8d0517e99ed30cc514eca0967f2eed74"
+checksum = "75dc2548fe5072cad37b5c816d2344d7cd12e8cafb1a0ff8bbf2bc1829054710"
 dependencies = [
  "multiversx-sc",
 ]
@@ -1441,9 +1441,9 @@ dependencies = [
 
 [[package]]
 name = "multiversx-wegld-swap-sc"
-version = "0.43.3"
+version = "0.43.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d1fb60139c86314ce73cfa94935a5923c7c2af1f3ff2a68badc6477c99509043"
+checksum = "d26e1630aa7d682aa870705bb7c0f9ed996762c694d8d95aa2abb527ecddfb05"
 dependencies = [
  "multiversx-sc",
  "multiversx-sc-modules",

@@ -1,7 +1,7 @@
 [package]
 name = "multisig"
 version = "0.0.0"
-authors = [ "you",]
+authors = ["you"]
 edition = "2018"
 publish = false
 
@@ -13,18 +13,11 @@ num-bigint = "0.4.2"
 num-traits = "0.2"
 hex = "0.4"
 
+[dev-dependencies.multiversx-sc-scenario]
+version = "=0.45.2"
+
 [dependencies.multiversx-sc]
-version = "=0.43.4"
+version = "=0.45.2"
 
 [dependencies.multiversx-sc-modules]
-version = "=0.43.4"
-
-[dev-dependencies.multiversx-sc-scenario]
-version = "=0.43.4"
-
-[dev-dependencies.adder]
-
-[dev-dependencies.factorial]
-
-[dev-dependencies.multiversx-wegld-swap-sc]
-version = "=0.43.4"
+version = "=0.45.2"

@@ -1,14 +1,13 @@
 [package]
 name = "lottery-esdt-meta"
 version = "0.0.0"
-authors = [ "you",]
-edition = "2018"
+authors = ["you"]
+edition = "2021"
 publish = false
-
-[dev-dependencies]
 
 [dependencies.lottery-esdt]
 path = ".."
 
 [dependencies.multiversx-sc-meta]
-version = "=0.43.4"
+version = "=0.45.2"
+default-features = false

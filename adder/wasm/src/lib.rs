@@ -5,12 +5,14 @@
 ////////////////////////////////////////////////////
 
 // Init:                                 1
-// Endpoints:                            2
+// Endpoints:                            3
 // Async Callback (empty):               1
-// Total number of exported functions:   4
+// Total number of exported functions:   5
 
 #![no_std]
-#![allow(internal_features)]
+
+// Configuration that works with rustc < 1.73.0.
+// TODO: Recommended rustc version: 1.73.0 or newer.
 #![feature(lang_items)]
 
 multiversx_sc_wasm_adapter::allocator!();
@@ -21,6 +23,7 @@ multiversx_sc_wasm_adapter::endpoints! {
     (
         init => init
         getSum => sum
+        upgrade => upgrade
         add => add
     )
 }

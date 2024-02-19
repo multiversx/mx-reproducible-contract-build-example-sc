@@ -1,7 +1,5 @@
 # mx-reproducible-contract-build-example-sc
 
-[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/multiversx/mx-reproducible-contract-build-example-sc)
+This repository has been archived. For an example on how to set up a CI pipeline with reproducible builds (for MultiversX smart contracts), please follow [mx-contracts-rs](https://github.com/multiversx/mx-contracts-rs) instead.
 
-Example of a Smart Contract whose build pipeline supports reproducible builds.
-
-See [docs.multiversx.com](https://docs.multiversx.com/developers/reproducible-contract-builds).
+Also see [docs.multiversx.com](https://docs.multiversx.com/developers/reproducible-contract-builds).
